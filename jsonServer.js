@@ -12,6 +12,7 @@ var mime    = require('mime');
 var app = express();
 
 var APP_PORT = 80;
+var IS_YOUTUBE = false;
 
 var BASE_DIR = './api.meetups.com';
 
@@ -148,56 +149,30 @@ app.get('/api/events/:id/photo/:photoName', function(req, res) {
 
 });
 
-app.get('/api/events/:id/videos', function(req, res) {
-
-  //console.log(req.params.id);
+app.get('/api/video/:videoName', function(req, res) {
 
   var pref = BASE_DIR + '/event_videos/';
 
-  var models = glob.sync(pref + req.params.id + '/*.*');
+  var videoPath = pref + req.params.videoName;
 
-  models = models
-    .filter(function(e) {
-      return /^video/i.test( mime.lookup(e) );
-    })
-    .map(function(e) {
+  var reg = new RegExp(req.params.videoName);
 
-      var aux = e.substring(pref.length, e.length);
-      aux = aux.split('/');
+  var models = glob.sync(pref + '*.*');
 
-      return {
-        url : '/api/events/' + aux[0] + '/video/' + aux[1],
-        mime : mime.lookup(e)
-      };
+  console.log(models);
 
-    });
+  models = models.filter(function(e) {
+    e = e.replace(/\./g, '\\.');
+    return reg.test(e);
+  });
 
-  //console.log(models);
+  if ( models.length > 0 ) {
 
-  return res.status(200).jsonp(models);
+    console.log(models[0]);
 
-});
+    //console.log('EXISTE EL VIDEO');
 
-app.get('/api/events/:id/video/:videoName', function(req, res) {
-
-  ///console.log(req.url);
-
-  var __path = decodeURI(req.url.toString()).split('/');
-
-  //console.log(__path);
-
-  __path = [
-    __path[3],
-    __path[5],
-  ].join('/');
-
-  var videoPath = BASE_DIR + '/event_videos/' + __path;
-
-  //console.log(photoPath);
-
-  if ( fs.existsSync( videoPath ) === true ) {
-
-    return res.status(200).sendFile(videoPath, {
+    return res.status(200).sendFile(models[0], {
       root : __dirname
     });
 
@@ -244,10 +219,13 @@ app.get('/api/events/:id/agenda', function(req, res) {
 
   var models = glob.sync(pref + req.params.id + '.json');
 
-  var result = [];
+  var result = {
+    agenda : [],
+    youtube : IS_YOUTUBE
+  };
 
   if ( models.length > 0 ) {
-    result = require(models[0]);
+    result.agenda = require(models[0]);
   }
 
   return res.status(200).jsonp(result);
