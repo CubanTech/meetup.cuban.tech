@@ -8,3 +8,5 @@ api.meetups.com_blockstack/
 *.swp
 *.swo
 
+*.orig
+
