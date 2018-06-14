@@ -587,17 +587,17 @@
         "href" : "http://blog.cuban.tech"
       },
       {
-        "content" : "fb.cuban.tech",
+        "content" : "fb.me/TheCubanTech",
         "type" : "facebook",
         "href" : "http://fb.cuban.tech"
       },
       {
-        "content" : "meetup.cuban.tech",
+        "content" : "Meetups",
         "type" : "meetup",
         "href" : "http://meetup.cuban.tech"
       },
       {
-        "content" : "videos.cuban.tech",
+        "content" : "Youtube",
         "type" : "youtube-play",
         "href" : "http://videos.cuban.tech"
       }
