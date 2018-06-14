@@ -572,34 +572,34 @@
   "footer" : {
     "contacts" : [
       {
-        "content" : "contacto@cuban.tech",
+        "content" : "contact@cuban.tech",
         "type" : "envelope",
-        "href" : "/contactUs"
+        "href" : "/contactUs.html"
       },
       {
         "content" : "@TheCubanTech",
         "type" : "twitter",
-        "href" : "https://twitter.com/cubanTech"
+        "href" : "http://twitter.cuban.tech"
       },
       {
-        "content" : "TheCubanTechBlog",
+        "content" : "Blog",
         "type" : "users",
-        "href" : "https://meetup.com"
+        "href" : "http://blog.cuban.tech"
       },
       {
-        "content" : "fb.me/TheCubanTech",
+        "content" : "fb.cuban.tech",
         "type" : "facebook",
-        "href" : "https://fb.me/TheCubanTech"
+        "href" : "http://fb.cuban.tech"
       },
       {
-        "content" : "meetup.cubantech.ex",
+        "content" : "meetup.cuban.tech",
         "type" : "meetup",
-        "href" : "https://meetup.cubantech.ex"
+        "href" : "http://meetup.cuban.tech"
       },
       {
-        "content" : "youtube.cubantech",
+        "content" : "videos.cuban.tech",
         "type" : "youtube-play",
-        "href" : "https://youtube.com/cubantech"
+        "href" : "http://videos.cuban.tech"
       }
     ],
     "slogan" : [
